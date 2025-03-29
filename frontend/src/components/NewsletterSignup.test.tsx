@@ -7,7 +7,7 @@ import * as api from '../utils/api';
 // Mock the API functions
 jest.mock('../utils/api', () => ({
   newsletterApi: {
-    signUp: jest.fn()
+    subscribe: jest.fn()
   }
 }));
 
@@ -26,7 +26,7 @@ describe('NewsletterSignup Component', () => {
   test('renders newsletter signup form', () => {
     render(<NewsletterSignup />);
     
-    expect(screen.getByText(/Join Our Newsletter/i)).toBeInTheDocument();
+    expect(screen.getByText(/Subscribe to Our Newsletter/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/Email/i)).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /Subscribe/i })).toBeInTheDocument();
   });

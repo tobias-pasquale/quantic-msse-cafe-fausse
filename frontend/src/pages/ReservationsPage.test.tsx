@@ -33,7 +33,7 @@ describe('ReservationsPage Component', () => {
     expect(screen.getByLabelText(/Date/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/Time/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/Number of Guests/i)).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /Reserve/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /Complete Reservation/i })).toBeInTheDocument();
   });
 
   test('validates form fields before submission', async () => {
@@ -43,8 +43,8 @@ describe('ReservationsPage Component', () => {
     fireEvent.click(screen.getByRole('button', { name: /Reserve/i }));
     
     // Check for validation messages
-    expect(screen.getByText(/name is required/i)).toBeInTheDocument();
-    expect(screen.getByText(/email is required/i)).toBeInTheDocument();
+    expect(screen.getByText(/Name is required/i)).toBeInTheDocument();
+    expect(screen.getByText(/Email is required/i)).toBeInTheDocument();
     expect(screen.getByText(/date is required/i)).toBeInTheDocument();
     expect(screen.getByText(/time is required/i)).toBeInTheDocument();
     expect(screen.getByText(/number of guests is required/i)).toBeInTheDocument();
