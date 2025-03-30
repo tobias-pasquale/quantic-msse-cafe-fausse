@@ -52,6 +52,12 @@ Café Fausse is a fine dining restaurant that needed a modern website to showcas
 - **Flask-Migrate**: Database migration management
 - **Flask-CORS**: Cross-Origin Resource Sharing support
 
+### Project Constraints
+- The front-end must be built using React and JSX
+- Styling employs CSS Grid for responsive design
+- The back-end utilizes Flask with a PostgreSQL database
+- The website functions consistently across major browsers and mobile devices
+
 ## 🚀 Getting Started
 
 ### Prerequisites
@@ -74,7 +80,7 @@ Café Fausse is a fine dining restaurant that needed a modern website to showcas
 
 3. Create a .env file in the frontend directory with the following content:
    ```
-   REACT_APP_API_URL=http://localhost:5000/api
+   REACT_APP_API_URL=http://localhost:5001/api
    ```
 
 4. Start the development server:
@@ -127,13 +133,13 @@ Café Fausse is a fine dining restaurant that needed a modern website to showcas
    python run_prod.py
    ```
 
-8. The backend API will be available at [http://localhost:5000](http://localhost:5000)
+8. The backend API will be available at [http://localhost:5001](http://localhost:5001)
 
 ### Environment Variables
 
 #### Frontend (.env)
 ```
-REACT_APP_API_URL=http://localhost:5000/api
+REACT_APP_API_URL=http://localhost:5001/api
 ```
 
 #### Backend (.env)
