@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import NewsletterSignup from './NewsletterSignup';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -35,10 +36,10 @@ const Footer: React.FC = () => {
         <div className="footer-section">
           <h3>Newsletter</h3>
           <p>Subscribe to receive updates on special events and promotions</p>
-          <form className="footer-newsletter">
-            <input type="email" placeholder="Your Email Address" required />
-            <button type="submit">Subscribe</button>
-          </form>
+          {/* Newsletter signup component */}
+          <section className="newsletter-section">
+            <NewsletterSignup className="home-newsletter" />
+          </section>
           <div className="social-links">
             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">FB</a>
             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">IG</a>
