@@ -3,7 +3,12 @@
  */
 
 // Use environment variable for API base URL or default to localhost in development
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5001/api';
+
+// Ensure endpoints are properly formatted without duplicate slashes
+const formatEndpoint = (endpoint: string) => {
+  return endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
+};
 
 /**
  * Base API client with common request handling
@@ -13,7 +18,7 @@ const apiClient = {
    * Send a GET request to the API
    */
   async get<T>(endpoint: string): Promise<T> {
-    const response = await fetch(`${API_BASE_URL}${endpoint}`);
+    const response = await fetch(`${API_BASE_URL}${formatEndpoint(endpoint)}`);
     
     if (!response.ok) {
       throw new Error(`API error: ${response.status} ${response.statusText}`);
@@ -26,7 +31,7 @@ const apiClient = {
    * Send a POST request to the API
    */
   async post<T>(endpoint: string, data: any): Promise<T> {
-    const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+    const response = await fetch(`${API_BASE_URL}${formatEndpoint(endpoint)}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

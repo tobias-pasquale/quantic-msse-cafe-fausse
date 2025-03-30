@@ -12,8 +12,10 @@ def create_app(config_name='development'):
     app = Flask(__name__)
     app.config.from_object(config[config_name])
     
-    # Enable CORS
-    CORS(app)
+    # Enable CORS with specific options to handle preflight requests properly
+    CORS(app, resources={r"/api/*": {"origins": "*", "supports_credentials": True}}, 
+         allow_headers=["Content-Type", "Authorization"], 
+         methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"])
     
     # Sample route
     @app.route('/')

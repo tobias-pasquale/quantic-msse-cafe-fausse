@@ -14,6 +14,7 @@ reservations_bp = Blueprint('reservations', __name__)
 TOTAL_TABLES = 30
 RESERVATION_DURATION = 90  # minutes
 
+@reservations_bp.route('', methods=['POST'])
 @reservations_bp.route('/', methods=['POST'])
 def create_reservation():
     """Create a new reservation"""
