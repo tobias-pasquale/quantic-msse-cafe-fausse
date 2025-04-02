@@ -66,34 +66,6 @@ Café Fausse is a fine dining restaurant that needed a modern website to showcas
 - Python (v3.8+) and pip
 - PostgreSQL (v13+)
 
-### Frontend Setup
-
-1. Navigate to the frontend directory:
-   ```bash
-   cd frontend
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Create a .env file in the frontend directory with the following content:
-   ```
-   REACT_APP_API_URL=http://localhost:5001/api
-   ```
-
-4. Start the development server:
-   ```bash
-   npm start
-   ```
-   For production build:
-   ```bash
-   npm run build
-   ```
-
-5. The frontend will be available at [http://localhost:3000](http://localhost:3000)
-
 ### Backend Setup
 
 1. Navigate to the backend directory:
@@ -134,6 +106,35 @@ Café Fausse is a fine dining restaurant that needed a modern website to showcas
    ```
 
 8. The backend API will be available at [http://localhost:5001](http://localhost:5001)
+
+
+### Frontend Setup
+
+1. Navigate to the frontend directory:
+   ```bash
+   cd frontend
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Create a .env file in the frontend directory with the following content:
+   ```
+   REACT_APP_API_URL=http://localhost:5001/api
+   ```
+
+4. Start the development server:
+   ```bash
+   npm start
+   ```
+   For production build:
+   ```bash
+   npm run build
+   ```
+
+5. The frontend will be available at [http://localhost:3000](http://localhost:3000)
 
 ### Environment Variables
 
