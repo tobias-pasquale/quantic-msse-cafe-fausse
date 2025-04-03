@@ -39,13 +39,16 @@ const AboutPage: React.FC = () => {
         </div>
       </section>
       
-      {/* TODO: Add section on restaurant's commitment to quality ingredients */}
       <section className="commitment-section">
         <h2>Our Commitment</h2>
-        {/* TODO: Add content about locally sourced ingredients and dining experience */}
+        <p>At Café Fausse, we believe that an unforgettable dining experience starts with passion, creativity, and the finest ingredients. Since our founding in 2010, we have been committed to crafting dishes that honor tradition while embracing innovation.</p>
+        
+        <p>Our menu is a reflection of our dedication to excellence, featuring locally sourced, seasonal ingredients that bring out the best in every bite.</p>
+        
+        <p>From handcrafted pastas to artfully plated modern creations, every dish is designed to surprise, delight, and leave a lasting impression. Whether you're joining us for an intimate dinner or a lively gathering, Café Fausse offers a warm, inviting atmosphere where every meal tells a story.</p>
       </section>
       
-      {/* Newsletter signup component for visitor engagement */}
+      /* Newsletter signup component for visitor engagement */
       <div className="newsletter-container">
         <NewsletterSignup className="about-newsletter" />
       </div>
