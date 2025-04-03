@@ -33,7 +33,7 @@ const AboutPage: React.FC = () => {
 
           <img src="/images/maria-lopez.jpg" alt="Maria Lopez" className="founder-image"/>
           
-          <p>A passionate entrepreneur with a deep appreciation for culinary artistry, Maria Lopez has spent her career curating dining experiences that blend tradition with innovation. Raised in a family that celebrated food as the heart of every gathering, she developed an early love for hospitality and the magic of a well-prepared meal. With a background in restaurant management and a keen eye for design, her expertise in crafting warm, inviting atmospheres and her commitment to impeccable service have made Café Fausse not just a restaurant, but a destinati</p>
+          <p>A passionate entrepreneur with a deep appreciation for culinary artistry, Maria Lopez has spent her career curating dining experiences that blend tradition with innovation. Raised in a family that celebrated food as the heart of every gathering, she developed an early love for hospitality and the magic of a well-prepared meal. With a background in restaurant management and a keen eye for design, her expertise in crafting warm, inviting atmospheres and her commitment to impeccable service have made Café Fausse not just a restaurant, but a destination for unforgettable dining experiences.</p>
 
           <p>Maria believes that dining is more than just eating—it’s about storytelling, connection, and creativity. From sourcing the finest ingredients to curating a menu that surprises and delights, she ensures that every guest at Café Fausse enjoys an unforgettable experience. Her dedication to hospitality and innovation continues to set the restaurant apart, making it a celebrated gem in the culinary world.</p>
         </div>
