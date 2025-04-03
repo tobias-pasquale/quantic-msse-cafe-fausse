@@ -12,7 +12,7 @@ const AboutPage: React.FC = () => {
       <section className="history-section">
         <h2>Our Story</h2>
        
-        <p>Founded in 2010 by Chef Antonio Rossi and restaurateur Maria Lopez, Café Fausse blends traditional Italian flavors with modern culinary innovation. Our mission is to provide an unforgettable dining experience that reflects both quality and creativity.</p>
+        <p>Founded in 2010 by Chef Antonio Rossi and restaurateur Maria Lopez, Café Fausse blends traditional Italian flavors with modern culinary innovation. Our mission is to provide an unforgettable dining experience that reflects both quality and creativity</p>
       </section>
       
       <section className="founders-section">

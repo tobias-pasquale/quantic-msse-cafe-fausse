@@ -13,17 +13,23 @@ const GalleryPage: React.FC = () => {
       <div className="gallery-grid">
         {/* TODO: Add image components with lightbox functionality */}
       </div>
-      
-      {/* TODO: Add Awards Section */}
+    
       <section className="awards-section">
         <h2>Our Awards</h2>
-        {/* TODO: Display awards as listed in FR-14 */}
+          <ul>
+            <li>Restaurant of the Year - 2023</li>
+            <li>Best Fine Dining Experience - Foodie Magazine, 2023</li>
+            <li>Culinary Excellence Award - 2022</li>
+          </ul>
       </section>
       
       {/* TODO: Add Customer Reviews Section */}
       <section className="reviews-section">
         <h2>Customer Testimonials</h2>
-        {/* TODO: Display customer reviews as listed in FR-14 */}
+          <ul>
+            <li>“Exceptional ambiance and unforgettable flavors.” – Gourmet Review</li>
+            <li> “A must-visit restaurant for food enthusiasts.” – The Daily Bite</li>
+          </ul>
       </section>
     </div>
   );
