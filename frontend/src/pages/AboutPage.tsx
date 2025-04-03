@@ -48,7 +48,7 @@ const AboutPage: React.FC = () => {
         <p>From handcrafted pastas to artfully plated modern creations, every dish is designed to surprise, delight, and leave a lasting impression. Whether you're joining us for an intimate dinner or a lively gathering, Café Fausse offers a warm, inviting atmosphere where every meal tells a story.</p>
       </section>
       
-      /* Newsletter signup component for visitor engagement */
+      {/* Newsletter signup component for visitor engagement */}
       <div className="newsletter-container">
         <NewsletterSignup className="about-newsletter" />
       </div>
