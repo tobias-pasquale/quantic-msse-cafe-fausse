@@ -1,0 +1,114 @@
+.site-footer {
+    background-color: #000;
+    color: #fff;
+    padding: 2rem;
+    border-top: 1px solid #444;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .footer-section h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+    color: #fff;
+  }
+  
+  .footer-section p,
+  .footer-links li {
+    font-size: 0.95rem;
+    margin: 0.25rem 0;
+  }
+  
+  .footer-links {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-links li a {
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-links li a:hover {
+    color: #8b5a2b;
+  }
+  
+  /* Simplified Newsletter Section */
+  .newsletter-section {
+    background: transparent;
+    margin-top: 1rem;
+    padding-top: 0.5rem;
+  }
+  
+  .newsletter-container {
+    background: transparent;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .newsletter-form {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.5rem;
+    align-items: center;
+  }
+  
+  .newsletter-form input {
+    background: #fff;
+    color: #000;
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+    font-size: 1rem;
+  }
+  
+  .newsletter-form button {
+    background: #8b5a2b;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .newsletter-form button:hover {
+    background: #704726;
+  }
+  
+  .social-links {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .social-links a {
+    font-size: 1.1rem;
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.3s ease;
+  }
+  
+  .social-links a:hover {
+    color: #8b5a2b;
+  }
+  
+  .footer-bottom {
+    text-align: center;
+    border-top: 1px solid #444;
+    padding-top: 1rem;
+    font-size: 0.9rem;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 600px) {
+    .site-footer {
+      padding: 1rem;
+    }
+  }

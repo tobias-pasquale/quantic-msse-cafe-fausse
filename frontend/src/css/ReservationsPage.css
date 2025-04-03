@@ -1,0 +1,164 @@
+.reservations-page {
+    padding: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    gap: 2rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #2c2c2c;
+  }
+  
+  .reservations-page h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  /* Reservation Confirmation */
+  .reservation-confirmation {
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+  }
+  
+  .confirmation-details p {
+    margin: 0.5rem 0;
+  }
+  
+  .make-new-reservation {
+    background-color: #8b5a2b;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .make-new-reservation:hover {
+    background-color: #704726;
+    transform: translateY(-2px);
+  }
+  
+  /* Reservation Form Container */
+  .reservation-form-container {
+    display: grid;
+    gap: 1.5rem;
+  }
+  
+  .reservation-form {
+    display: grid;
+    gap: 1.5rem;
+  }
+  
+  /* Form Groups */
+  .form-group {
+    display: grid;
+    gap: 0.5rem;
+  }
+  
+  .form-group label {
+    font-weight: bold;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    font-size: 1rem;
+  }
+  
+  /* Check Availability Section */
+  .check-availability {
+    display: grid;
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  .check-availability button {
+    background-color: #8b5a2b;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .check-availability button:hover {
+    background-color: #704726;
+    transform: translateY(-2px);
+  }
+  
+  .availability-success p {
+    color: green;
+    font-size: 1rem;
+  }
+  
+  .availability-error p {
+    color: red;
+    font-size: 1rem;
+  }
+  
+  /* Form Submit */
+  .form-submit {
+    text-align: center;
+  }
+  
+  .form-submit button {
+    background-color: #8b5a2b;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .form-submit button:hover {
+    background-color: #704726;
+    transform: translateY(-2px);
+  }
+  
+  /* Reservation Policies */
+  .reservation-info {
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    padding: 1.5rem;
+  }
+  
+  .reservation-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.75rem;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .reservation-info ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .reservation-info li {
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 600px) {
+    .reservations-page {
+      padding: 1rem;
+    }
+    .reservations-page h1 {
+      font-size: 2rem;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      font-size: 0.9rem;
+    }
+  }

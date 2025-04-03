@@ -1,27 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import NewsletterSignup from '../components/NewsletterSignup';
-
-// TODO: FR-3 - Include high-quality images and maintain a consistent theme
+import '../css/HomePage.css';
 
 const HomePage: React.FC = () => {
   return (
     <div className="home-page">
-      {/* TODO: FR-1 - Display restaurant name prominently with hero image */}
+      {/* FR-1 - Display restaurant name prominently */}
       <div className="hero-section">
-        <h1>Café Fausse</h1>
-        <p className="tagline">Fine dining with a modern twist</p>
-        {/* TODO: Add high-resolution hero image */}
+        <div className="hero-overlay">
+          <h1>Café Fausse</h1>
+          <p className="tagline">Fine dining with a modern twist</p>
+          {/* No hero image provided, so we use a fallback background */}
+        </div>
       </div>
       
-      {/* TODO: FR-2 - Show contact information and hours */}
+      {/* FR-2 - Show contact information and hours */}
       <section className="info-section">
         <div className="contact-info">
           <h2>Contact Us</h2>
           <p className="address">1234 Culinary Ave, Suite 100, Washington, DC 20002</p>
           <p className="phone">(202) 555-4567</p>
         </div>
-        
         <div className="hours-info">
           <h2>Hours</h2>
           <p>Monday–Saturday: 5:00PM – 11:00 PM</p>
@@ -29,17 +29,32 @@ const HomePage: React.FC = () => {
         </div>
       </section>
       
-      {/* TODO: FR-4 - Feature highlights with images */}
+      {/* FR-4 - Feature highlights with images */}
       <section className="highlights-section">
         <h2>Experience Café Fausse</h2>
         <div className="highlights-grid">
-          {/* TODO: Add featured menu items with images */}
-          {/* TODO: Add restaurant ambiance image */}
-          {/* TODO: Add chef spotlight image */}
+          <div className="highlight-item">
+            <div className="highlight-image" id="menu-highlight">
+              {/* TODO: Replace with featured menu item image */}
+            </div>
+            <div className="highlight-caption">Gourmet Menu</div>
+          </div>
+          <div className="highlight-item">
+            <div className="highlight-image" id="ambiance-highlight">
+              {/* TODO: Replace with ambiance image */}
+            </div>
+            <div className="highlight-caption">Elegant Ambiance</div>
+          </div>
+          <div className="highlight-item">
+            <div className="highlight-image" id="chef-highlight">
+              {/* TODO: Replace with chef spotlight image */}
+            </div>
+            <div className="highlight-caption">Chef’s Masterpieces</div>
+          </div>
         </div>
       </section>
       
-      {/* TODO: FR-4 - Provide navigation to main sections with visual elements */}
+      {/* FR-4 - Provide navigation to main sections with visual elements */}
       <section className="quick-links">
         <h2>Explore Café Fausse</h2>
         <div className="links-grid">
@@ -49,14 +64,12 @@ const HomePage: React.FC = () => {
             </div>
             <h3>Our Menu</h3>
           </Link>
-          
           <Link to="/reservations" className="quick-link">
             <div className="link-image reservation-image">
               {/* TODO: Add reservation image */}
             </div>
             <h3>Make a Reservation</h3>
           </Link>
-          
           <Link to="/gallery" className="quick-link">
             <div className="link-image gallery-image">
               {/* TODO: Add gallery image */}
