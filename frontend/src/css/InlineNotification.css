@@ -1,0 +1,59 @@
+.inline-notification {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.inline-notification p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.inline-notification.success {
+  color: green;
+}
+
+.inline-notification.error {
+  color: red;
+}
+
+.inline-notification.info {
+  color: #0a5eb7;
+}
+
+.inline-notification .close-button {
+  background: transparent;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  color: inherit;
+  padding: 0.25rem;
+  line-height: 1;
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inline-notification .close-button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* When inside a check-availability container, match exactly with availability indicators */
+.check-availability .inline-notification {
+  display: block;
+}
+
+.check-availability .inline-notification .close-button {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .inline-notification p {
+    font-size: 0.9rem;
+  }
+}

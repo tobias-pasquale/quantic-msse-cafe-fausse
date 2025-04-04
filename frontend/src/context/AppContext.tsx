@@ -22,20 +22,13 @@ type Category = {
 
 type NotificationType = 'success' | 'error' | 'info';
 
-type Notification = {
-  id: string;
-  message: string;
-  type: NotificationType;
-};
-
+// Define the context type without notification state
 type AppContextType = {
   menuItems: MenuItem[];
   categories: Category[];
   isLoading: boolean;
   error: string | null;
-  notifications: Notification[];
   showNotification: (message: string, type: NotificationType) => void;
-  dismissNotification: (id: string) => void;
   refreshMenuData: () => Promise<void>;
 };
 
@@ -45,9 +38,7 @@ const AppContext = createContext<AppContextType>({
   categories: [],
   isLoading: false,
   error: null,
-  notifications: [],
   showNotification: () => {},
-  dismissNotification: () => {},
   refreshMenuData: async () => {},
 });
 
@@ -60,7 +51,6 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   const [categories, setCategories] = useState<Category[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-  const [notifications, setNotifications] = useState<Notification[]>([]);
 
   // Function to fetch menu data
   const fetchMenuData = async () => {
@@ -78,26 +68,16 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
     } catch (err: any) {
       console.error('Error fetching menu data:', err);
       setError(err.message || 'Failed to fetch menu data');
-      showNotification('Failed to load menu data. Please try again later.', 'error');
+      console.log('Failed to load menu data. Please try again later.');
     } finally {
       setIsLoading(false);
     }
   };
 
-  // Show a notification
+  // Show notification function - now just logs to console
   const showNotification = (message: string, type: NotificationType = 'info') => {
-    const id = Date.now().toString();
-    setNotifications((prev) => [...prev, { id, message, type }]);
-    
-    // Auto-dismiss after 5 seconds
-    setTimeout(() => {
-      dismissNotification(id);
-    }, 5000);
-  };
-
-  // Dismiss a notification
-  const dismissNotification = (id: string) => {
-    setNotifications((prev) => prev.filter((notification) => notification.id !== id));
+    console.log(`${type.toUpperCase()}: ${message}`);
+    // We could implement a different notification mechanism here in the future
   };
 
   // Refresh menu data
@@ -116,9 +96,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
     categories,
     isLoading,
     error,
-    notifications,
     showNotification,
-    dismissNotification,
     refreshMenuData,
   };
 
