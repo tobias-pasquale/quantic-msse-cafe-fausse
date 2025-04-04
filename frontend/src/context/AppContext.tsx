@@ -68,7 +68,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
     } catch (err: any) {
       console.error('Error fetching menu data:', err);
       setError(err.message || 'Failed to fetch menu data');
-      console.log('Failed to load menu data. Please try again later.');
+      showNotification('Failed to load menu data. Please try again later.', 'error');
     } finally {
       setIsLoading(false);
     }

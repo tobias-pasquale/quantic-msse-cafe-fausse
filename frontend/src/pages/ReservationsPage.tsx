@@ -88,13 +88,13 @@ const ReservationsPage: React.FC = () => {
       if (!response.available) {
         // Only set the availability notification, not the general notification
         setAvailabilityNotification({
-          message: '✗ Not available. Please select another time.',
+          message: 'Not available. Please select another time.',
           type: 'error'
         });
       } else {
         // Only set the availability notification, not the general notification
         setAvailabilityNotification({
-          message: `✓ Available! (${remainingTables} tables remaining)`,
+          message: `Available! (${remainingTables} tables remaining)`,
           type: 'success'
         });
       }
@@ -276,7 +276,7 @@ const ReservationsPage: React.FC = () => {
               
               {availabilityNotification && (
                 <InlineNotification
-                  message={availabilityNotification.message.replace('✓ ', '').replace('✗ ', '')}
+                  message={availabilityNotification.message}
                   type={availabilityNotification.type}
                   duration={0}
                   onDismiss={() => setAvailabilityNotification(null)}
