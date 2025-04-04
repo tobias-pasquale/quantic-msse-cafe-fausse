@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useAppContext } from '../context/AppContext';
 import { reservationApi } from '../utils/api';
+import InlineNotification from '../components/InlineNotification';
 import '../css/ReservationsPage.css';
 
 const ReservationsPage: React.FC = () => {
@@ -31,6 +32,10 @@ const ReservationsPage: React.FC = () => {
     table_number?: number;
   } | null>(null);
 
+  // Notification state
+  const [notification, setNotification] = useState<{message: string; type: 'success' | 'error' | 'info'} | null>(null);
+  const [availabilityNotification, setAvailabilityNotification] = useState<{message: string; type: 'success' | 'error'} | null>(null);
+  
   // Handle form input changes
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -40,7 +45,20 @@ const ReservationsPage: React.FC = () => {
     if (name === 'date' || name === 'time' || name === 'guests') {
       setAvailabilityChecked(false);
       setIsAvailable(false);
+      setAvailabilityNotification(null);
     }
+  };
+  
+  // Display notification inline instead of using the global notification system
+  const displayNotification = (message: string, type: 'success' | 'error' | 'info') => {
+    setNotification({ message, type });
+    // Still call the context method for logging purposes
+    showNotification(message, type);
+  };
+
+  // Clear notification
+  const clearNotification = () => {
+    setNotification(null);
   };
   
   // Check availability
@@ -49,7 +67,7 @@ const ReservationsPage: React.FC = () => {
     
     // Basic validation
     if (!formData.date || !formData.time || !formData.guests) {
-      showNotification('Please select a date, time, and number of guests.', 'error');
+      displayNotification('Please select a date, time, and number of guests.', 'error');
       return;
     }
     
@@ -62,18 +80,27 @@ const ReservationsPage: React.FC = () => {
         parseInt(formData.guests.toString())
       );
       
+      const remainingTables = response.tables_remaining || 0;
+      setTablesRemaining(remainingTables);
       setIsAvailable(response.available);
-      setTablesRemaining(response.tables_remaining || 0);
       setAvailabilityChecked(true);
       
       if (!response.available) {
-        showNotification('Sorry, this time slot is fully booked. Please select another time.', 'error');
+        // Only set the availability notification, not the general notification
+        setAvailabilityNotification({
+          message: 'Not available. Please select another time.',
+          type: 'error'
+        });
       } else {
-        showNotification(`Great! We have tables available for ${formData.date} at ${formData.time}.`, 'success');
+        // Only set the availability notification, not the general notification
+        setAvailabilityNotification({
+          message: `Available! (${remainingTables} tables remaining)`,
+          type: 'success'
+        });
       }
     } catch (error) {
       console.error('Error checking availability:', error);
-      showNotification('Error checking availability. Please try again.', 'error');
+      displayNotification('Error checking availability. Please try again.', 'error');
       setIsAvailable(false);
     } finally {
       setIsCheckingAvailability(false);
@@ -86,25 +113,25 @@ const ReservationsPage: React.FC = () => {
     
     // Validation
     if (!formData.name || !formData.email || !formData.date || !formData.time || !formData.guests) {
-      showNotification('Please fill in all required fields.', 'error');
+      displayNotification('Please fill in all required fields.', 'error');
       return;
     }
     
     // Email validation
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!emailRegex.test(formData.email)) {
-      showNotification('Please enter a valid email address.', 'error');
+      displayNotification('Please enter a valid email address.', 'error');
       return;
     }
     
     // Check availability again if not already checked
     if (!availabilityChecked) {
-      showNotification('Please check availability before submitting.', 'error');
+      displayNotification('Please check availability before submitting.', 'error');
       return;
     }
     
     if (!isAvailable) {
-      showNotification('This time slot is not available. Please select another time.', 'error');
+      displayNotification('This time slot is not available. Please select another time.', 'error');
       return;
     }
     
@@ -119,7 +146,6 @@ const ReservationsPage: React.FC = () => {
           reservation_id: response.reservationId,
           table_number: response.tableNumber
         });
-        showNotification('Reservation confirmed! Check your email for details.', 'success');
         
         // Reset form
         setFormData({
@@ -134,11 +160,11 @@ const ReservationsPage: React.FC = () => {
         setAvailabilityChecked(false);
         setIsAvailable(false);
       } else {
-        showNotification(response.message || 'Error creating reservation.', 'error');
+        displayNotification(response.message || 'Error creating reservation.', 'error');
       }
     } catch (error) {
       console.error('Error submitting reservation:', error);
-      showNotification('Error submitting reservation. Please try again.', 'error');
+      displayNotification('Error submitting reservation. Please try again.', 'error');
     } finally {
       setIsSubmitting(false);
     }
@@ -162,6 +188,15 @@ const ReservationsPage: React.FC = () => {
   return (
     <div className="reservations-page">
       <h1>Make a Reservation</h1>
+      
+      {/* Display notification if exists */}
+      {notification && (
+        <InlineNotification
+          message={notification.message}
+          type={notification.type}
+          onDismiss={clearNotification}
+        />
+      )}
       
       {submissionSuccess && reservationDetails ? (
         <div className="reservation-confirmation">
@@ -239,16 +274,14 @@ const ReservationsPage: React.FC = () => {
                 {isCheckingAvailability ? 'Checking...' : 'Check Availability'}
               </button>
               
-              {availabilityChecked && isAvailable && (
-                <div className="availability-success">
-                  <p>✓ Available! ({tablesRemaining} tables remaining)</p>
-                </div>
-              )}
-              
-              {availabilityChecked && !isAvailable && (
-                <div className="availability-error">
-                  <p>✗ Not available. Please select another time.</p>
-                </div>
+              {availabilityNotification && (
+                <InlineNotification
+                  message={availabilityNotification.message}
+                  type={availabilityNotification.type}
+                  duration={0}
+                  onDismiss={() => setAvailabilityNotification(null)}
+                  showSymbol={true}
+                />
               )}
             </div>
             

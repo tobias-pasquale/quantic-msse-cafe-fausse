@@ -1,10 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAppContext } from '../context/AppContext';
+import InlineNotification from '../components/InlineNotification';
 import '../css/MenuPage.css';
 
 const MenuPage: React.FC = () => {
-  const { menuItems, categories, isLoading } = useAppContext();
+  const { menuItems, categories, isLoading, error, showNotification, refreshMenuData } = useAppContext();
   const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
+  const [notification, setNotification] = useState<{message: string; type: 'success' | 'error' | 'info'} | null>(null);
+
+  // Handle errors from context
+  useEffect(() => {
+    if (error) {
+      setNotification({
+        message: `Error loading menu: ${error}`,
+        type: 'error'
+      });
+    }
+  }, [error]);
+
+  // Retry loading menu data
+  const handleRetryLoad = () => {
+    refreshMenuData();
+    setNotification({
+      message: 'Retrying to load menu data...',
+      type: 'info'
+    });
+  };
+
+  // Clear notification
+  const clearNotification = () => {
+    setNotification(null);
+  };
 
   if (isLoading) {
     return <div className="loading">Loading menu...</div>;
@@ -36,16 +62,39 @@ const MenuPage: React.FC = () => {
     return (
       <div className="menu-page">
         <h1>Our Menu</h1>
+        
+        {/* Display notification if exists */}
+        {notification && (
+          <InlineNotification
+            message={notification.message}
+            type={notification.type}
+            onDismiss={clearNotification}
+          />
+        )}
+        
+        {error && (
+          <div className="retry-container">
+            <button onClick={handleRetryLoad} className="retry-button">
+              Retry Loading Menu
+            </button>
+          </div>
+        )}
+        
         {renderCategoryFilter()}
-        <section className="menu-list">
-          {filteredItems.map(item => (
-            <div key={item.id} className="menu-item">
-              <h3>{item.name}</h3>
-              <p className="description">{item.description}</p>
-              <p className="price">${item.price.toFixed(2)}</p>
-            </div>
-          ))}
-        </section>
+        
+        {filteredItems.length > 0 ? (
+          <section className="menu-list">
+            {filteredItems.map(item => (
+              <div key={item.id} className="menu-item">
+                <h3>{item.name}</h3>
+                <p className="description">{item.description}</p>
+                <p className="price">${item.price.toFixed(2)}</p>
+              </div>
+            ))}
+          </section>
+        ) : (
+          <div className="no-items">No items found in this category.</div>
+        )}
       </div>
     );
   }
@@ -54,7 +103,26 @@ const MenuPage: React.FC = () => {
   return (
     <div className="menu-page">
       <h1>Our Menu</h1>
+      
+      {/* Display notification if exists */}
+      {notification && (
+        <InlineNotification
+          message={notification.message}
+          type={notification.type}
+          onDismiss={clearNotification}
+        />
+      )}
+      
+      {error && (
+        <div className="retry-container">
+          <button onClick={handleRetryLoad} className="retry-button">
+            Retry Loading Menu
+          </button>
+        </div>
+      )}
+      
       {renderCategoryFilter()}
+      
       {categories.map(category => {
         // Filter items for the current category.
         const categoryItems = menuItems.filter(item => item.category_id === category.id);
