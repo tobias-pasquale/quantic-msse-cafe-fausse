@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import NewsletterSignup from './NewsletterSignup';
+import '../css/Footer.css';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -33,17 +34,11 @@ const Footer: React.FC = () => {
           </ul>
         </div>
         
-        <div className="footer-section">
+        <div className="footer-section newsletter-section">
           <h3>Newsletter</h3>
           <p>Subscribe to receive updates on special events and promotions</p>
-          {/* Newsletter signup component */}
-          <section className="newsletter-section">
-            <NewsletterSignup className="home-newsletter" />
-          </section>
-          <div className="social-links">
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">FB</a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">IG</a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">TW</a>
+          <div className="newsletter-container">
+            <NewsletterSignup footerMode={true} className="home-newsletter" />
           </div>
         </div>
       </div>

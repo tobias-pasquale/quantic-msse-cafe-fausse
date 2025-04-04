@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { useAppContext } from '../context/AppContext';
 import { newsletterApi } from '../utils/api';
+import './NewsletterSignup.css';
 
 interface NewsletterSignupProps {
   className?: string;
+  footerMode?: boolean;
 }
 
-const NewsletterSignup: React.FC<NewsletterSignupProps> = ({ className }) => {
+const NewsletterSignup: React.FC<NewsletterSignupProps> = ({ className, footerMode }) => {
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubscribed, setIsSubscribed] = useState(false);
@@ -53,8 +55,13 @@ const NewsletterSignup: React.FC<NewsletterSignupProps> = ({ className }) => {
 
   return (
     <div className={`newsletter-signup ${className || ''}`}>
-      <h3>Subscribe to Our Newsletter</h3>
-      <p>Stay updated with our latest events, seasonal menus, and special promotions.</p>
+      {/* Only show heading and description if not in footer mode */}
+      {!footerMode && (
+        <>
+          <h3>Subscribe to Our Newsletter</h3>
+          <p>Stay updated with our latest events, seasonal menus, and special promotions.</p>
+        </>
+      )}
       
       {isSubscribed ? (
         <div className="subscription-success">
@@ -79,15 +86,18 @@ const NewsletterSignup: React.FC<NewsletterSignupProps> = ({ className }) => {
               aria-label="Email address for newsletter"
             />
             <button 
-              type="submit" 
+              type="submit"
+              className="subscribe-button"
               disabled={isSubmitting || !email}
             >
               {isSubmitting ? 'Subscribing...' : 'Subscribe'}
             </button>
           </div>
-          <small className="privacy-note">
-            We respect your privacy and will never share your information.
-          </small>
+          {!footerMode && (
+            <small className="privacy-note">
+              We respect your privacy and will never share your information.
+            </small>
+          )}
         </form>
       )}
     </div>
