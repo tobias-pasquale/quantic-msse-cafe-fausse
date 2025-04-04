@@ -1,35 +1,74 @@
-import React from 'react';
-
-// TODO: FR-13 - Implement a lightbox feature for enlarged image viewing
-// TODO: FR-14 - Display restaurant awards and customer testimonials
-// TODO: FR-12 - Add high-resolution images of restaurant interior, dishes, and events
+import React, { useState } from 'react';
+import '../css/GalleryPage.css';
+import menuItemImg from '../assets/menu-item.jpg';
+import specialEventImg from '../assets/gallery-special-event.jpg';
+import ribeyeSteakImg from '../assets/gallery-ribeye-steak.jpg';
+import cafeInteriorImg from '../assets/gallery-cafe-interior.jpg';
 
 const GalleryPage: React.FC = () => {
+  const images = [
+    { src: menuItemImg, alt: 'Menu Item', id: 'img1' },
+    { src: specialEventImg, alt: 'Special Event', id: 'img2' },
+    { src: ribeyeSteakImg, alt: 'Ribeye Steak', id: 'img3' },
+    { src: cafeInteriorImg, alt: 'Cafe Interior', id: 'img4' },
+  ];
+  
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<string>('');
+
+  const openLightbox = (src: string) => {
+    setSelectedImage(src);
+    setLightboxOpen(true);
+  };
+
+  const closeLightbox = () => {
+    setLightboxOpen(false);
+    setSelectedImage('');
+  };
+
   return (
     <div className="gallery-page">
       <h1>Gallery</h1>
       
-      {/* TODO: Implement grid layout for gallery images */}
+      {/* Gallery Grid */}
       <div className="gallery-grid">
-        {/* TODO: Add image components with lightbox functionality */}
+        {images.map((img) => (
+          <div key={img.id} className="gallery-item" onClick={() => openLightbox(img.src)}>
+            <img src={img.src} alt={img.alt} />
+          </div>
+        ))}
       </div>
-    
+      
+      {/* Lightbox Modal */}
+      {lightboxOpen && (
+        <div className="lightbox" onClick={closeLightbox}>
+          <div className="lightbox-content">
+            <img src={selectedImage} alt="Expanded View" />
+          </div>
+        </div>
+      )}
+
+      {/* Awards Section */}
       <section className="awards-section">
         <h2>Our Awards</h2>
-          <ul>
-            <li>Restaurant of the Year - 2023</li>
-            <li>Best Fine Dining Experience - Foodie Magazine, 2023</li>
-            <li>Culinary Excellence Award - 2022</li>
-          </ul>
+        <ul className="awards-list">
+          <li>Culinary Excellence Award – 2022</li>
+          <li>Restaurant of the Year – 2023</li>
+          <li>Best Fine Dining Experience – Foodie Magazine, 2023</li>
+        </ul>
       </section>
       
-      {/* TODO: Add Customer Reviews Section */}
+      {/* Customer Testimonials Section */}
       <section className="reviews-section">
         <h2>Customer Testimonials</h2>
-          <ul>
-            <li>“Exceptional ambiance and unforgettable flavors.” – Gourmet Review</li>
-            <li> “A must-visit restaurant for food enthusiasts.” – The Daily Bite</li>
-          </ul>
+        <div className="testimonial">
+          <p>“Exceptional ambiance and unforgettable flavors.”</p>
+          <span>– Gourmet Review</span>
+        </div>
+        <div className="testimonial">
+          <p>“A must-visit restaurant for food enthusiasts.”</p>
+          <span>– The Daily Bite</span>
+        </div>
       </section>
     </div>
   );

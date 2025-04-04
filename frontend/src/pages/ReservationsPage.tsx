@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useAppContext } from '../context/AppContext';
 import { reservationApi } from '../utils/api';
+import '../css/ReservationsPage.css';
 
 const ReservationsPage: React.FC = () => {
   const { showNotification } = useAppContext();
