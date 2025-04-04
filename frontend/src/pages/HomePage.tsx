@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import NewsletterSignup from '../components/NewsletterSignup';
+import { ContactInfo, HoursInfo } from '../components/CafeInformation';
 import '../css/HomePage.css';
 
 const HomePage: React.FC = () => {
@@ -17,16 +18,8 @@ const HomePage: React.FC = () => {
       
       {/* FR-2 - Show contact information and hours */}
       <section className="info-section">
-        <div className="contact-info">
-          <h2>Contact Us</h2>
-          <p className="address">1234 Culinary Ave, Suite 100, Washington, DC 20002</p>
-          <p className="phone">(202) 555-4567</p>
-        </div>
-        <div className="hours-info">
-          <h2>Hours</h2>
-          <p>Monday–Saturday: 5:00PM – 11:00 PM</p>
-          <p>Sunday: 5:00 PM – 9:00 PM</p>
-        </div>
+        <ContactInfo />
+        <HoursInfo />
       </section>
       
       {/* FR-4 - Feature highlights with images */}

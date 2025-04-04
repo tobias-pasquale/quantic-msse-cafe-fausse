@@ -1,0 +1,52 @@
+/* Styles for the NotFoundPage */
+.not-found-page {
+    padding: 2rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #2c2c2c;
+    display: grid;
+    gap: 2rem;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.not-found-page h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    color: #8b5a2b;
+    margin-bottom: 1rem;
+}
+
+.not-found-page p {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.not-found-page .home-link {
+    font-size: 1.25rem;
+    color: #ffffff;
+    background-color: #8b5a2b;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.not-found-page .home-link:hover {
+    background-color: #704726;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+    .not-found-page h1 {
+        font-size: 3rem;
+    }
+    .not-found-page p {
+        font-size: 1rem;
+    }
+    .not-found-page .home-link {
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+    }
+}
