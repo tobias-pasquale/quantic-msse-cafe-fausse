@@ -12,7 +12,7 @@ export const ContactInfo: React.FC = () => (
 export const HoursInfo: React.FC = () => (
   <div className="hours-info">
     <h3>Hours</h3>
-    <p>Monday–Saturday: 5:00PM – 11:00 PM</p>
+    <p>Monday–Saturday: 5:00 PM – 11:00 PM</p>
     <p>Sunday: 5:00 PM – 9:00 PM</p>
   </div>
 );
