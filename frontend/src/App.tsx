@@ -8,6 +8,7 @@ import MenuPage from './pages/MenuPage';
 import ReservationsPage from './pages/ReservationsPage';
 import AboutPage from './pages/AboutPage';
 import GalleryPage from './pages/GalleryPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 // Layout Components
 import Navigation from './components/Navigation';
@@ -61,7 +62,7 @@ const AppContent: React.FC = () => {
           <Route path="/gallery" element={<GalleryPage />} />
           
           {/* Redirect any other path to home */}
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
       
