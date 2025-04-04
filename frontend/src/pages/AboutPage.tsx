@@ -50,11 +50,6 @@ const AboutPage: React.FC = () => {
           At Café Fausse, we are devoted to delivering unforgettable dining experiences through excellent food, exceptional service, and a commitment to locally sourced ingredients. We take pride in every dish, ensuring each plate reflects our passion for culinary art.
         </p>
       </section>
-      
-      {/* Newsletter Signup */}
-      <div className="newsletter-container">
-        <NewsletterSignup className="about-newsletter" />
-      </div>
     </div>
   );
 };

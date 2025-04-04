@@ -78,11 +78,6 @@ const HomePage: React.FC = () => {
           </Link>
         </div>
       </section>
-      
-      {/* Newsletter signup component */}
-      <section className="newsletter-section">
-        <NewsletterSignup className="home-newsletter" />
-      </section>
     </div>
   );
 };
