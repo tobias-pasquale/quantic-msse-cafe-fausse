@@ -162,7 +162,7 @@ cafe-fausse/
 │       ├── components/     # Reusable UI components
 │       ├── context/        # React Context API providers
 │       ├── pages/          # Page components
-│       ├── styles/         # CSS styles
+│       ├── css/            # CSS styles
 │       └── utils/          # Utility functions and API clients
 │
 ├── backend/                # Flask backend application
