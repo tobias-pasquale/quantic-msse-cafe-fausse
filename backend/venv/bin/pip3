@@ -1,4 +1,4 @@
-#!/Users/sethmcknight/Developer/quantic-msse-cafe-fausse/backend/venv/bin/python
+#!/Users/pasqut/MSSE/pythonProjects/quantic-msse-cafe-fausse/quantic-msse-cafe-fausse/backend/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
